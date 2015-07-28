@@ -14,36 +14,33 @@ During training, we use an attention mechanism to select the most context-approp
 What is the usage of concept vectors? They can be used for disambiguating word meanings contextually.
 
 ##Extended Parameters
--cbow
+###-cbow
 When cbow=0, train the skip-gram; otherwise train the cbow.
 For concept training, cbow must be set to 0.
 
--hs
+###-hs
 When hs=0, train word vectors without hierarchical decomposition of softmax;
 When hs=1, train word vectors with Huffman tree as the hierarchical softmax;
 When hs=2, train word vectors with concept class based decomposition.
 For concept training, hs must be set to 2.
 
--output
-The output file to store word vectors.
-
--output_concept
+###-output_concept
 The output file to store concept vectors.
 If it is not for concept training, the parameter should not be set. But if hs=1, the file stores the vectors of the hidden tree nodes. 
 
--negative 
+###-negative 
 When cbow=0 and hs=2,  negative is the number of negative examples sampled when computing the concept->output error.
 In other cases, negative is the number of negative examples sampled when computing the input->output error. 
 Large value leads to higher accuracy but slower speed. Default value is 5.
 
--negative_concept
+###-negative_concept
 This is the number of negative examples sampled when computing the input->concept error. The samples are drawn from the uniform distribution of concept classes. Large value leads to higher accuracy but slower speed. Default value is 0.
 If negative_concept=0, there will be no negative sampling performed in the input->concept prediction; i.e., all concept classes will be traversed.
 
--size
+###-size
 Size of the word vectors and concept vectors.
 
--class
+###-class
 The file that stores words and their corresponding concepts in the following format:
 Word1\tconcept_idx1\tconcept_idx2…\n
 Word2\tconcept_idx1\tconcept_idx2…\n
